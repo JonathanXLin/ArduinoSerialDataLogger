@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.IO.Ports;
 using System.Diagnostics;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Arduino_Serial_Receive
 {
@@ -62,6 +63,27 @@ namespace Arduino_Serial_Receive
             comboBoxBaudRate.Items.Add("115200");
 
             comboBoxBaudRate.SelectedText = "9600";
+
+            initialize_chart();
+        }
+
+        public void initialize_chart()
+        {
+            chartData.Series.Clear();
+            chartData.Legends.Clear();
+
+            var seriesData = new System.Windows.Forms.DataVisualization.Charting.Series
+            {
+                Name = "SeriesData",
+                Color = System.Drawing.Color.Gray,
+                IsVisibleInLegend = false,
+                IsXValueIndexed = true,
+                ChartType = SeriesChartType.Line
+            };
+
+            this.chartData.Series.Add(seriesData);
+
+            chartData.Invalidate();
         }
 
         private void connectToArduino()
@@ -150,6 +172,8 @@ namespace Arduino_Serial_Receive
                 sw.Write(str.Substring(0, str.Length - 4) + "\t\t\t" + value.ToString());
             }
             */
+
+            chartData.Series["SeriesData"].Points.AddXY(Convert.ToDouble(stopwatch.Elapsed.TotalMilliseconds), value);
         }
 
         private void timerMillisecond_Tick(object sender, EventArgs e)

@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.comboBoxPort = new System.Windows.Forms.ComboBox();
             this.buttonConnect = new System.Windows.Forms.Button();
@@ -47,9 +50,11 @@
             this.labelDirectory = new System.Windows.Forms.Label();
             this.buttonSelectCreateFile = new System.Windows.Forms.Button();
             this.labelCurrentDirectory = new System.Windows.Forms.Label();
+            this.chartData = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBoxSerial.SuspendLayout();
             this.groupBoxDataReceived.SuspendLayout();
             this.groupBoxFileOutput.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartData)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxPort
@@ -77,7 +82,7 @@
             this.groupBoxSerial.Controls.Add(this.buttonConnect);
             this.groupBoxSerial.Controls.Add(this.comboBoxBaudRate);
             this.groupBoxSerial.Controls.Add(this.comboBoxPort);
-            this.groupBoxSerial.Location = new System.Drawing.Point(12, 134);
+            this.groupBoxSerial.Location = new System.Drawing.Point(12, 433);
             this.groupBoxSerial.Name = "groupBoxSerial";
             this.groupBoxSerial.Size = new System.Drawing.Size(497, 82);
             this.groupBoxSerial.TabIndex = 2;
@@ -117,7 +122,7 @@
             this.groupBoxDataReceived.Controls.Add(this.textBoxData);
             this.groupBoxDataReceived.Controls.Add(this.labelTime);
             this.groupBoxDataReceived.Controls.Add(this.labelData);
-            this.groupBoxDataReceived.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxDataReceived.Location = new System.Drawing.Point(12, 311);
             this.groupBoxDataReceived.Name = "groupBoxDataReceived";
             this.groupBoxDataReceived.Size = new System.Drawing.Size(269, 116);
             this.groupBoxDataReceived.TabIndex = 3;
@@ -173,7 +178,7 @@
             this.groupBoxFileOutput.Controls.Add(this.labelDirectory);
             this.groupBoxFileOutput.Controls.Add(this.buttonSelectCreateFile);
             this.groupBoxFileOutput.Controls.Add(this.labelCurrentDirectory);
-            this.groupBoxFileOutput.Location = new System.Drawing.Point(298, 12);
+            this.groupBoxFileOutput.Location = new System.Drawing.Point(298, 311);
             this.groupBoxFileOutput.Name = "groupBoxFileOutput";
             this.groupBoxFileOutput.Size = new System.Drawing.Size(211, 116);
             this.groupBoxFileOutput.TabIndex = 4;
@@ -210,11 +215,29 @@
             this.labelCurrentDirectory.TabIndex = 1;
             this.labelCurrentDirectory.Text = "Current Directory";
             // 
+            // chartData
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chartData.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartData.Legends.Add(legend1);
+            this.chartData.Location = new System.Drawing.Point(12, 12);
+            this.chartData.Name = "chartData";
+            series1.ChartArea = "ChartArea1";
+            series1.IsVisibleInLegend = false;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartData.Series.Add(series1);
+            this.chartData.Size = new System.Drawing.Size(497, 283);
+            this.chartData.TabIndex = 5;
+            this.chartData.Text = "Data";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(521, 227);
+            this.ClientSize = new System.Drawing.Size(521, 527);
+            this.Controls.Add(this.chartData);
             this.Controls.Add(this.groupBoxFileOutput);
             this.Controls.Add(this.groupBoxDataReceived);
             this.Controls.Add(this.groupBoxSerial);
@@ -229,6 +252,7 @@
             this.groupBoxDataReceived.PerformLayout();
             this.groupBoxFileOutput.ResumeLayout(false);
             this.groupBoxFileOutput.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartData)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -251,6 +275,7 @@
         private System.Windows.Forms.TextBox textBoxTime;
         private System.Windows.Forms.TextBox textBoxData;
         private System.Windows.Forms.Label labelDirectory;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartData;
     }
 }
 

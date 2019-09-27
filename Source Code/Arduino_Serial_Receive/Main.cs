@@ -208,6 +208,8 @@ namespace Arduino_Serial_Receive
                 Globals.directorySelected = true;
                 buttonConnect.Enabled = true;
             }
+
+            labelDirectory.Text = Globals.saveFileDialog.FileName.ToString();
         }
 
         private void comboBoxBaudRate_SelectedIndexChanged(object sender, EventArgs e)
